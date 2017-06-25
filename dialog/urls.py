@@ -17,8 +17,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic.base import RedirectView
 from rest_framework import routers
-from .main.views import IndexView, SubmitView
-from .restful import views
+from main.views import IndexView, SubmitView
+from restful import views
 from django.views.generic.base import RedirectView
 
 router = routers.DefaultRouter()
