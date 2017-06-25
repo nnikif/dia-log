@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic.base import RedirectView
 from rest_framework import routers
-# from main.views import IndexView, SubmitView
+from main.views import IndexView, SubmitView
 from restful import views
 from django.views.generic.base import RedirectView
 
@@ -32,6 +32,6 @@ urlpatterns = [
     url(r'^', include(router.urls)),
 
     url(r'^admin/', include(admin.site.urls)),
-    # url(r'^d/', IndexView.as_view()),
-    # url(r'^submit/', SubmitView.as_view(), name='submit-view'),
+    url(r'^d/', IndexView.as_view()),
+    url(r'^submit/', SubmitView.as_view(), name='submit-view'),
     ]
