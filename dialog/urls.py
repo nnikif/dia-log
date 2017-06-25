@@ -13,9 +13,25 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic.base import RedirectView
+from rest_framework import routers
+from main.views import IndexView, SubmitView
+from restful import views
+from django.views.generic.base import RedirectView
+
+router = routers.DefaultRouter()
+router.register(r'dialogues', views.DialogueViewSet)
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-]
+    url(r'^$', RedirectView.as_view(url="/d/1")),
+    # Examples:
+    # url(r'^$', 'dialog.views.home', name='home'),
+    # url(r'^blog/', include('blog.urls')),
+    url(r'^', include(router.urls)),
+
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^d/', IndexView.as_view()),
+    url(r'^submit/', SubmitView.as_view(), name='submit-view'),
+    ]
